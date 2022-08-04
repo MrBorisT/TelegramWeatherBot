@@ -146,8 +146,7 @@ func SetMsgCityWeather(city string, update tgbotapi.Update, msg *tgbotapi.Messag
 	apiAddress := getAPIAddress(city, weatherApiToken, update.Message.From.LanguageCode)
 	currentWeather := WeatherAPI(apiAddress)
 	msg.Text = city + "\n"
-	msg.Text = FormatWeather(currentWeather, update.Message.From.LanguageCode)
-	msg.ReplyToMessageID = update.Message.MessageID
+	msg.Text += FormatWeather(currentWeather, update.Message.From.LanguageCode)
 }
 
 func GetText(id, lang string) string {
